@@ -1,0 +1,16 @@
+# Optional, free, local-only PostgreSQL + PostGIS for development.
+# Not required to run the backend health check.
+#   docker compose up -d db
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: ghana
+      POSTGRES_PASSWORD: ghana_dev_password
+      POSTGRES_DB: ghana_unlocked
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
